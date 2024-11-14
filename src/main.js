@@ -38,6 +38,7 @@ async function onFormBtnClick(event) {
   gallery.innerHTML = '';
   loader.style.display = 'block';
   btnLoadMore.style.display = 'none';
+  endLoaderText.style.display = 'none';
 
   queryValue = event.target.elements.query.value;
 
@@ -69,7 +70,10 @@ async function onFormBtnClick(event) {
       btnLoadMore.style.display = 'none';
     }
   } catch (error) {
-    alert(error.message);
+    iziToast.error({
+      title: 'Error',
+      message: 'Oops! Something went wrong. Try again.',
+    });
   } finally {
     loader.style.display = 'none';
   }
@@ -110,7 +114,10 @@ async function onBtnLoadMoreClick() {
       behavior: 'smooth',
     });
   } catch (error) {
-    alert(error.message);
+    iziToast.error({
+      title: 'Error',
+      message: 'Oops! Something went wrong. Try again.',
+    });
   } finally {
     loaderMore.style.display = 'none';
   }
